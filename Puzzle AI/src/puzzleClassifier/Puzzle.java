@@ -10,7 +10,7 @@ public class Puzzle {
 
 	
 	public Puzzle() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }
