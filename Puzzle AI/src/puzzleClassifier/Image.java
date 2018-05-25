@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Manipulation of puzzle image into pieces
+ * Manipulation of puzzle image
  * -splitting of image into pieces
  * -file retrieval and storage
  */
@@ -37,8 +37,8 @@ public class Image {
 		rows = cols = numPieces = 1;
 		width = img.getWidth(); 
 		height = img.getHeight();
-		pieceW = width/cols;
-		pieceH = height/rows;	
+		pieceW = width;
+		pieceH = height;	
 	}
 
 	/**
@@ -49,19 +49,13 @@ public class Image {
 	 * @param rows - number of rows in puzzle
 	 * @param cols - number of columns in puzzle
 	 * FOR PURPOSES OF MAKING TESTING DATA
+	 * @return 
 	 */
-	public Image(String imgPath, int rows, int cols) throws IOException{
-		//load image file
-		inFile = new File(imgPath);
-		img = ImageIO.read(inFile);
-		
+	public void makePuzzle(int rows, int cols) throws IOException{
 		//sets attributes 
-		imgID = this.getID(imgPath);
 		this.rows = rows;
 		this.cols = cols;
 		numPieces = rows*cols;
-		width = img.getWidth(); 
-		height = img.getHeight();
 		pieceW = width/cols;
 		pieceH = height/rows;
 		
@@ -98,6 +92,7 @@ public class Image {
 		
 	}
 
+	//MAKE FOLDER INCLUDE ID
 	/**
 	 * stores pieces as separate jpeg image files 
 	 * (CURRENTLY STORING PIECES IN NAKED DIRECTORY)
@@ -105,7 +100,19 @@ public class Image {
 	 */
 	private void writeToFile(BufferedImage[] images) throws IOException {
 		String name;
-		new File("Pieces").mkdir();//creates directory
+		
+		//creates empty directory
+		File dir = new File("Pieces");
+		if(!dir.exists()) {//directory did not previously exist
+			new File("Pieces").mkdir();
+		}
+		else {//previously existed -> empty
+			File[] files = dir.listFiles(); 
+			for (File f : files) {
+				f.delete();
+			}
+		}
+		
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
 			name = "Pieces/" + this.imgID + "_" + i + ".jpg";

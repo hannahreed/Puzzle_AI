@@ -9,7 +9,8 @@ public class Application {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Image img = new Image("IMG_pies.jpg", 3, 4);
+		Image img = new Image("IMG_pies.jpg");
+		img.makePuzzle(3, 2);
 
 	}
 
