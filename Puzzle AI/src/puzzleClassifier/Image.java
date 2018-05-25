@@ -105,6 +105,7 @@ public class Image {
 	 */
 	private void writeToFile(BufferedImage[] images) throws IOException {
 		String name;
+		new File("Pieces").mkdir();//creates directory
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
 			name = "Pieces/" + this.imgID + "_" + i + ".jpg";
