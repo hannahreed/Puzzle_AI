@@ -1,10 +1,10 @@
 package puzzleClassifier;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import puzzleClassifier.Application;
 
 /**
  * Manipulation of puzzle image
@@ -27,13 +27,12 @@ public class Image {
 	 * @param imgPath - file directory
 	 * FOR PURPOSES OF ANALYZING ENTIRE IMAGE
 	 */
-	public Image(String imgPath) throws IOException{
+	public Image(File inFile) throws IOException{
 		//load image file
-		inFile = new File(imgPath);
 		img = ImageIO.read(inFile);
 		
 		//set initial attributes - one piece
-		imgID = this.getID(imgPath);
+		imgID = this.getID(inFile);
 		rows = cols = numPieces = 1;
 		width = img.getWidth(); 
 		height = img.getHeight();
@@ -65,10 +64,10 @@ public class Image {
 	
 	/**
 	 * returns name of image from file directory
-	 * TO DO
+	 * MAY RETURN SOMETHING DIFFERENT AT A LATER POINT
 	 */
-	private String getID(String imgPath) {
-		return "Pies";
+	private String getID(File f) {
+		return f.getName();
 	}
 	
 	/**
@@ -102,20 +101,12 @@ public class Image {
 		String name;
 		
 		//creates empty directory
-		File dir = new File("Pieces");
-		if(!dir.exists()) {//directory did not previously exist
-			new File("Pieces").mkdir();
-		}
-		else {//previously existed -> empty
-			File[] files = dir.listFiles(); 
-			for (File f : files) {
-				f.delete();
-			}
-		}
+		//CLEAR THE PIECES DIR PRIOR TO FIRST ENTRY
+		File dir = Application.makeEmptyDir("Pieces/" + this.imgID);
 		
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
-			name = "Pieces/" + this.imgID + "_" + i + ".jpg";
+			name = "Pieces/" + this.imgID + "/" + this.imgID + "_" + i + ".jpg";
 			this.outFile = new File(name);
 			ImageIO.write(images[i], "jpg", outFile);//stores as jpeg file
 		}
