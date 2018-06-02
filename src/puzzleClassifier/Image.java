@@ -1,13 +1,13 @@
 package puzzleClassifier;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import puzzleClassifier.Application;
 
 /**
- * Manipulation of puzzle image into pieces
+ * Manipulation of puzzle image
  * -splitting of image into pieces
  * -file retrieval and storage
  */
@@ -27,18 +27,17 @@ public class Image {
 	 * @param imgPath - file directory
 	 * FOR PURPOSES OF ANALYZING ENTIRE IMAGE
 	 */
-	public Image(String imgPath) throws IOException{
+	public Image(File inFile) throws IOException{
 		//load image file
-		inFile = new File(imgPath);
 		img = ImageIO.read(inFile);
 		
 		//set initial attributes - one piece
-		imgID = this.getID(imgPath);
+		imgID = this.getID(inFile);
 		rows = cols = numPieces = 1;
 		width = img.getWidth(); 
 		height = img.getHeight();
-		pieceW = width/cols;
-		pieceH = height/rows;	
+		pieceW = width;
+		pieceH = height;	
 	}
 
 	/**
@@ -49,19 +48,13 @@ public class Image {
 	 * @param rows - number of rows in puzzle
 	 * @param cols - number of columns in puzzle
 	 * FOR PURPOSES OF MAKING TESTING DATA
+	 * @return 
 	 */
-	public Image(String imgPath, int rows, int cols) throws IOException{
-		//load image file
-		inFile = new File(imgPath);
-		img = ImageIO.read(inFile);
-		
+	public void makePuzzle(int rows, int cols) throws IOException{
 		//sets attributes 
-		imgID = this.getID(imgPath);
 		this.rows = rows;
 		this.cols = cols;
 		numPieces = rows*cols;
-		width = img.getWidth(); 
-		height = img.getHeight();
 		pieceW = width/cols;
 		pieceH = height/rows;
 		
@@ -71,10 +64,10 @@ public class Image {
 	
 	/**
 	 * returns name of image from file directory
-	 * TO DO
+	 * MAY RETURN SOMETHING DIFFERENT AT A LATER POINT
 	 */
-	private String getID(String imgPath) {
-		return "Pies";
+	private String getID(File f) {
+		return f.getName();
 	}
 	
 	/**
@@ -98,6 +91,7 @@ public class Image {
 		
 	}
 
+	//MAKE FOLDER INCLUDE ID
 	/**
 	 * stores pieces as separate jpeg image files 
 	 * (CURRENTLY STORING PIECES IN NAKED DIRECTORY)
@@ -105,10 +99,14 @@ public class Image {
 	 */
 	private void writeToFile(BufferedImage[] images) throws IOException {
 		String name;
-		new File("Pieces").mkdir();//creates directory
+		
+		//creates empty directory
+		//CLEAR THE PIECES DIR PRIOR TO FIRST ENTRY
+		File dir = Application.makeEmptyDir("Pieces/" + this.imgID);
+		
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
-			name = "Pieces/" + this.imgID + "_" + i + ".jpg";
+			name = "Pieces/" + this.imgID + "/" + this.imgID + "_" + i + ".jpg";
 			this.outFile = new File(name);
 			ImageIO.write(images[i], "jpg", outFile);//stores as jpeg file
 		}
