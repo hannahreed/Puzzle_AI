@@ -10,11 +10,10 @@ public class Application {
 		//create folder of training images
 		//File trainingData  = makeEmptyDir("training data");
 		
-		
 		File[] data = new File("training data").listFiles();
 		for (File sampleImg : data) {
 			Image img = new Image(sampleImg);
-			img.makePuzzle(10, 10);//MAKE SURE RESOLUTION PERMITS SUBDIVISIONS 
+			img.makePuzzle(4, 4);//MAKE SURE RESOLUTION PERMITS SUBDIVISIONS 
 		}
 		
 
