@@ -8,7 +8,11 @@ package testData;
 public class UserInterface {
 
 	public UserInterface() {
-		// TODO Auto-generated constructor stub
+		
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 
 }
