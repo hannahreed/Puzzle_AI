@@ -103,7 +103,7 @@ public class Image {
 		
 		//creates empty directory
 		//CLEAR THE PIECES DIR PRIOR TO FIRST ENTRY
-		File dir = Application.makeEmptyDir("Pieces/" + this.imgID);
+		Application.makeEmptyDir("Pieces/" + this.imgID);
 		
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
