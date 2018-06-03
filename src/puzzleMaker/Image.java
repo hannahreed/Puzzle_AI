@@ -1,10 +1,11 @@
-package puzzleClassifier;
+package puzzleMaker;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import puzzleClassifier.Application;
+
+import puzzleMaker.Application;
 
 /**
  * Manipulation of puzzle image

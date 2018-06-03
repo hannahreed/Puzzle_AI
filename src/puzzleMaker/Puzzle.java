@@ -1,4 +1,4 @@
-package puzzleClassifier;
+package puzzleMaker;
 
 
 /**

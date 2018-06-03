@@ -1,4 +1,4 @@
-package puzzleClassifier;
+package puzzleMaker;
 
 import java.io.File;
 import java.io.IOException;
