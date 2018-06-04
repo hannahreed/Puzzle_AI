@@ -15,8 +15,6 @@ public class Application {
 			Image img = new Image(sampleImg);
 			img.makePuzzle(3, 2);//MAKE SURE RESOLUTION PERMITS SUBDIVISIONS 
 		}
-		
-
 	}
 	
 	/**

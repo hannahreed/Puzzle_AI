@@ -15,7 +15,7 @@ import puzzleMaker.Application;
 public class Image {
 
 	private BufferedImage img = null;
-	private File inFile, outFile  = null;//input, output files
+	private File outFile  = null;//output files
 	
 	private String imgID; //name of original image, for naming pieces in multi-image file
 	private int rows, cols;//number of rows and columns in puzzle
