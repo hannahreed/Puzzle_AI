@@ -1,0 +1,31 @@
+*resolve ambiguity in purpose between Puzzle/Pieces class
+	-which class will be responsible for what functionality
+		~comparing whether pieces are adjacent (Puzzle - not intrinsic to one piece)
+		~which Pieces are joined (Pieces - linking adjacent pieces)
+	-whether Pieces class is necessary - currently operating that it is
+	-possibility of including a 'Picture' class (rename) that will hold pixel/other 
+	data pertaining to visuals of Piece instances
+	+(Puzzle acts like a board to hold Pieces)
+
+*create infrastructure for Pieces class
+	-stores image displayed on piece File/new Class/pixel data
+	-identifier (for adjacency comparison)
+	+(identifying puzzle as border Piece)
+
+*create infrastructure for Puzzle class
+	-process image, create Piece instance for each subdivision
+	-meta methods: whether puzzle is solved, timer
+
+*create database of properly sorted image pairs as training data
+	-construct UI to display two images, prompt user if images belong in same group
+	-application class to pass images to compare and for back-end processes
+		~store images locally/database/using AWS
+
+*future: classes involved with neural network
+
+----------------------------------------------------------------------------------------------
+FORESEEABLE FUTURE ISSUES +(may store in seperate file)
+
+
+
+
