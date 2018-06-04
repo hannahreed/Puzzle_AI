@@ -28,6 +28,9 @@
 
 -------------------------------------------------------------------------------
 FORESEEABLE FUTURE ISSUES +(may store in seperate file)
+-different number of input neurons for different resolution images
+-alogorithm may not adapt to recognize similar patterns in general but group
+specific patterns
 
 
 
