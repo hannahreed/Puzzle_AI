@@ -1,4 +1,4 @@
-package puzzleClassifier;
+package puzzleMaker;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,10 +13,8 @@ public class Application {
 		File[] data = new File("training data").listFiles();
 		for (File sampleImg : data) {
 			Image img = new Image(sampleImg);
-			img.makePuzzle(4, 4);//MAKE SURE RESOLUTION PERMITS SUBDIVISIONS 
+			img.makePuzzle(3, 2);//MAKE SURE RESOLUTION PERMITS SUBDIVISIONS 
 		}
-		
-
 	}
 	
 	/**

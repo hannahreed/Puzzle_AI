@@ -1,10 +1,11 @@
-package puzzleClassifier;
+package puzzleMaker;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import puzzleClassifier.Application;
+
+import puzzleMaker.Application;
 
 /**
  * Manipulation of puzzle image
@@ -14,7 +15,7 @@ import puzzleClassifier.Application;
 public class Image {
 
 	private BufferedImage img = null;
-	private File inFile, outFile  = null;//input, output files
+	private File outFile  = null;//output files
 	
 	private String imgID; //name of original image, for naming pieces in multi-image file
 	private int rows, cols;//number of rows and columns in puzzle
@@ -102,7 +103,7 @@ public class Image {
 		
 		//creates empty directory
 		//CLEAR THE PIECES DIR PRIOR TO FIRST ENTRY
-		File dir = Application.makeEmptyDir("Pieces/" + this.imgID);
+		Application.makeEmptyDir("Pieces/" + this.imgID);
 		
 		//writing each piece to file
 		for (int i = 0; i < images.length; i++) {
